@@ -1,23 +1,262 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
+
+    <!-- Schema.org Structured Data for Rich Snippets -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "전국 이사짐센터 비교 플랫폼",
+      "url": "https://www.yourdomain.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://www.yourdomain.com/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+    <style>
+        /* CSS 스타일: 부드러운 색감, 명확한 계층 구조, 텍스트 가독성 향상 */
+        body { font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif; margin: 0; padding: 0; line-height: 1.8; color: #333; background-color: #f9f9f9; }
+        header { background: linear-gradient(135deg, #0077b6, #00b4d8); color: #fff; padding: 40px 20px; text-align: center; border-bottom: 5px solid #ffba08; }
+        header h1 { font-size: 2.5rem; margin-bottom: 10px; font-weight: bold; }
+        header p { font-size: 1.2rem; margin-bottom: 20px; opacity: 0.9; }
+        .cta-btn { background: #ffba08; color: #000; padding: 15px 30px; border-radius: 8px; font-size: 1.1rem; text-decoration: none; font-weight: bold; display: inline-block; transition: background-color 0.3s ease; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); }
+        .cta-btn:hover { background: #fca311; }
+        nav { background: #ffffff; padding: 15px 0; border-bottom: 1px solid #eee; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); }
+        nav ul { list-style: none; padding: 0; margin: 0; display: flex; justify-content: center; flex-wrap: wrap; }
+        nav ul li { margin: 0 15px; }
+        nav ul li a { text-decoration: none; color: #0077b6; font-weight: bold; font-size: 1rem; padding: 10px 0; display: block; }
+        section { padding: 40px 20px; max-width: 1000px; margin: 0 auto; background-color: #ffffff; border-radius: 10px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.05); margin-top: 20px; }
+        h2 { font-size: 2rem; color: #0077b6; border-bottom: 2px solid #ffba08; padding-bottom: 10px; margin-top: 0; }
+        h3 { font-size: 1.5rem; color: #023e8a; margin-top: 30px; }
+        p { margin-bottom: 15px; font-size: 1.05rem; }
+        ul { padding-left: 20px; margin-bottom: 20px; }
+        li { margin-bottom: 8px; }
+
+        /* 비교 표 스타일 */
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 1rem; }
+        th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
+        th { background-color: #eaf6ff; font-weight: bold; color: #023e8a; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+
+        /* 폼 스타일 */
+        .quote-form-container { background-color: #f0f8ff; padding: 30px; border-radius: 10px; margin-top: 30px; }
+        .quote-form-container h2 { border-color: #00b4d8; }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-weight: bold; margin-bottom: 8px; color: #023e8a; }
+        input[type="text"], input[type="date"], input[type="tel"], select, textarea { width: calc(100% - 22px); padding: 12px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-size: 1rem; }
+        button[type="submit"] { background: #023e8a; color: #fff; border: none; padding: 15px; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 1.1rem; width: 100%; margin-top: 10px; transition: background-color 0.3s ease; }
+        button[type="submit"]:hover { background: #001f3f; }
+
+        /* 그래프 및 시각화 요소 (CSS만으로 간단 구현) */
+        .graph-container { margin-top: 30px; }
+        .bar-chart { display: flex; align-items: flex-end; height: 200px; padding: 20px; background-color: #fff; border: 1px solid #ddd; border-radius: 5px; }
+        .bar { width: 15%; margin: 0 2.5%; text-align: center; color: #fff; font-size: 0.9rem; position: relative; }
+        .bar-label { position: absolute; bottom: -20px; width: 100%; font-size: 0.9rem; color: #555; }
+        .bar-value { padding: 5px; background-color: #ffba08; border-radius: 3px 3px 0 0; }
+        .bar-value.blue { background-color: #0077b6; }
+        .bar-value.green { background-color: #2a9d8f; }
+
+        /* 키워드 영역 */
+        .keyword-box { background-color: #f0f8ff; border: 1px solid #e0eaf4; padding: 20px; border-radius: 8px; margin-top: 20px; }
+        .keyword-box p { font-size: 0.95rem; line-height: 2; color: #555; }
+
+        /* 외부 링크 섹션 */
+        .external-links { background-color: #f0f0f0; padding: 20px; border-radius: 8px; margin-top: 30px; }
+        .external-links li a { color: #0077b6; text-decoration: none; font-weight: bold; }
+
+        /* Footer */
+        footer { background: #333; color: #eee; text-align: center; padding: 25px 20px; font-size: 0.9rem; margin-top: 30px; }
+        footer a { color: #ffba08; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>전국 이사짐센터 가격비교 및 추천 – 2026년 최신 정보</h1>
+        <p>이사, 이제 더 이상 어렵지 않습니다. 전국 1,000여 개 업체 실시간 비교 견적, 실제 고객 후기로 합리적인 이사 비용을 찾아보세요.</p>
+        <a href="#quote-form" class="cta-btn">무료 견적 30초 신청하기</a>
+    </header>
+
     <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
+        <ul>
+            <li><a href="#comparison-guide">이사짐센터 비교 가이드</a></li>
+            <li><a href="#service-type">서비스 종류별 견적</a></li>
+            <li><a href="#nationwide-list">전국 이사업체 리스트</a></li>
+            <li><a href="#reviews">내돈내산 실제 후기</a></li>
+            <li><a href="#cost-factors">이사 비용 절약 팁</a></li>
+            <li><a href="#quote-form">견적 신청</a></li>
+        </ul>
     </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
-</html>
+
+    <section id="comparison-guide">
+        <h2>실시간 이사짐센터 가격비교 가이드: 현명한 선택을 위한 첫걸음</h2>
+        <p>2026년 이사 시장의 주요 트렌드는 '투명한 가격'과 '신뢰성 있는 후기'입니다. 과거에는 단순히 '싼곳'을 찾는 것이 중요했지만, 최근에는 파손이나 분실에 대한 보상 여부, 서비스 품질 등 종합적인 측면을 고려한 '합리적인 가격'에 대한 관심이 높아졌습니다. 이사짐센터비교 플랫폼을 이용하면 여러 업체의 견적을 한 번에 받고, 실제 고객 후기를 기반으로 업체를 선택할 수 있어 시간과 비용을 동시에 절약할 수 있습니다.</p>
+
+        <h3>이사 비용에 영향을 미치는 핵심 요소 분석</h3>
+        <p>이사 비용은 단순히 거리나 짐의 양만으로 결정되지 않습니다. 이사 날짜, 작업 인원, 사다리차 사용 여부, 짐 보관 기간, 추가 옵션(청소, 에어컨 설치 등) 등 수많은 변수가 작용합니다. 따라서 정확한 견적을 받기 위해서는 이사 종류(포장이사, 반포장이사, 용달이사)를 명확히 하고, 방문 견적을 통해 꼼꼼하게 짐의 양을 확인하는 것이 필수입니다. 이사짐센터비교를 통해 단순히 낮은 가격만 보고 계약할 경우, 추후 추가 비용 발생으로 인해 예상보다 많은 지출을 할 수도 있습니다.</p>
+
+        <h3>이사 견적 비교의 중요성: 최적가와 최적의 서비스 찾기</h3>
+        <p>이사 업체마다 견적 산출 방식과 서비스 범위가 다르기 때문에 최소 3~4곳의 견적을 비교하는 것이 좋습니다. 동일한 조건이라도 업체별로 가격 차이가 최대 30%까지 발생할 수 있습니다. 특히 이사 성수기(손 없는 날, 주말)에는 가격이 급등하므로, 비수기를 이용하거나 평일에 이사하는 것도 비용을 절약하는 좋은 방법입니다. 저희 플랫폼은 투명한 견적 비교를 통해 고객님이 '내돈내산'으로도 만족할 수 있는 합리적인 업체를 추천해 드립니다.</p>
+    </section>
+
+    <section id="service-type">
+        <h2>서비스 종류별 이사짐센터 비교: 포장이사 vs 용달이사 vs 반포장이사</h2>
+        <p>이삿짐 규모와 예산에 맞춰 어떤 서비스를 선택해야 할지 고민이신가요? 각 서비스의 특징을 비교하여 자신에게 맞는 이사 방식을 선택하세요.</p>
+
+        <h3>1. 포장이사 (Full-Service Moving)</h3>
+        <p>포장에서 정리까지 모든 과정을 이사업체에서 전담하는 서비스입니다. 바쁜 직장인이나 육아로 인해 시간이 부족한 분들에게 적합합니다. 포장, 운반, 배치, 청소까지 전문 인력이 진행하므로 이사 당일 고객의 부담이 가장 적습니다. 다만, 서비스 수준에 따라 가격이 높게 형성될 수 있으므로, 프리미엄 서비스를 제공하는 업체와 일반 업체를 비교하여 선택하는 것이 좋습니다. 특히 '이사 싼곳'을 찾다가 서비스 품질이 떨어지는 업체를 만날 수 있으니, 가격과 함께 고객 후기를 반드시 확인해야 합니다.</p>
+        <div class="keyword-box">
+            <h4>포장이사 관련 키워드:</h4>
+            <p>포장이사 추천, 포장이사 잘하는 곳, 포장이사 비용, 이사짐센터비교, 포장이사 저렴한 곳, 프리미엄 포장이사, 파손 보상 보험, 이사 청소 포함</p>
+        </div>
+
+        <h3>2. 용달이사 (Freight Moving)</h3>
+        <p>1톤, 2.5톤 등 소형 화물차량을 이용한 이사 서비스입니다. 원룸이사, 소형 오피스텔 이사, 짐이 적은 1~2인 가구에 적합합니다. 이삿짐 포장과 정리는 고객이 직접 하고, 운반 및 운송만 업체에 맡기는 방식으로 '셀프이사' 또는 '반셀프이사'라고도 불립니다. 용달이사 비용은 포장이사보다 훨씬 저렴하지만, 이사 당일 고객이 직접 노동을 해야 한다는 단점이 있습니다. 짐이 적더라도 운반이 어려운 가구나 가전제품이 있다면 용달 이사를 고려해 볼 수 있습니다.</p>
+        <div class="keyword-box">
+            <h4>용달이사 관련 키워드:</h4>
+            <p>용달이사 비용, 원룸이사 싼곳, 용달이사 가격, 1톤 용달, 소형 이사, 오피스텔 이사, 짐 적을 때 이사</p>
+        </div>
+
+        <h3>3. 반포장이사 (Half-Service Moving)</h3>
+        <p>포장이사와 용달이사의 중간 형태입니다. 업체 인력이 짐을 포장해주고, 도착지에서 고객이 직접 짐을 정리하는 방식입니다. 포장의 수고로움을 덜면서 비용을 절감하고자 할 때 유용합니다. 포장재는 업체에서 제공받지만, 정리는 고객 몫이므로 정리하는 데 시간이 오래 걸리는 분들에게는 적합하지 않을 수 있습니다. 짐의 양이 많지 않은 투룸이나 소규모 아파트 이사에 많이 활용됩니다.</p>
+        <div class="keyword-box">
+            <h4>반포장이사 관련 키워드:</h4>
+            <p>반포장이사 비용, 반포장이사 장단점, 투룸 이사, 포장 및 운반 서비스</p>
+        </div>
+    </section>
+
+    <section id="cost-analysis">
+        <h2>이사 비용 절약을 위한 2026년 이사 시장 분석 및 견적 시뮬레이션</h2>
+        <p>이사 비용 절약의 핵심은 '시기'와 '비교'입니다. 이사 성수기와 비수기의 가격 차이를 분석하고, 이사짐센터비교를 통해 합리적인 견적을 받는 방법을 알아보겠습니다.</p>
+
+        <h3>이사 비용에 따른 만족도 분석 (가상의 그래프)</h3>
+        <div class="graph-container">
+            <h3>이사 비용대별 고객 만족도 및 파손 비율</h3>
+            <div class="bar-chart">
+                <div class="bar">
+                    <div class="bar-value" style="height: 40%;"></div>
+                    <div class="bar-label">저가 업체<br>(만족도 낮음)</div>
+                </div>
+                <div class="bar">
+                    <div class="bar-value blue" style="height: 70%;"></div>
+                    <div class="bar-label">평균가 업체<br>(만족도 보통)</div>
+                </div>
+                <div class="bar">
+                    <div class="bar-value green" style="height: 90%;"></div>
+                    <div class="bar-label">프리미엄 업체<br>(만족도 높음)</div>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 0.9rem; margin-top: 30px;">(주의: 저가 업체는 만족도가 낮고 파손 위험이 높을 수 있습니다. 신뢰성 있는 이사짐센터비교가 중요합니다.)</p>
+        </div>
+
+        <h3>이사 비용 절약 팁: 견적 비교 시 반드시 확인할 사항</h3>
+        <p>1. <strong>이사 날짜 조정:</strong> 주말, 공휴일, 손 없는 날을 피하고 평일에 이사하면 10~20% 비용 절감이 가능합니다. 2. <strong>방문 견적 필수:</strong> 전화 견적만으로는 정확한 비용 산출이 어렵습니다. 방문 견적을 통해 짐의 양, 작업 환경(사다리차 사용 여부, 엘리베이터 유무)을 정확히 파악해야 추가 요금 발생을 막을 수 있습니다. 3. <strong>불필요한 짐 정리:</strong> 이사 전에 미리 짐을 정리하여 짐의 양을 줄이면 이사 비용이 감소합니다. 4. <strong>보험 가입 여부 확인:</strong> 이사 중 파손에 대비하여 이사 적재물 배상책임보험에 가입된 업체인지 확인하세요. 싼곳만 찾다가 보상이 안되는 경우를 방지해야 합니다. 5. <strong>계약서 명시:</strong> 계약서에 추가 비용 항목(에어컨 탈부착, 청소 서비스 등)을 명확히 기재해야 합니다.</p>
+    </section>
+
+    <section id="nationwide-list">
+        <h2>전국 이사짐센터 지역별 비교 및 자동완성 키워드 목록 (30개 이상)</h2>
+        <p>전국 주요 도시와 지역별 이사짐센터를 비교하고, 해당 지역에서 많이 찾는 자동완성 및 연관 키워드를 정리했습니다. 원하는 지역을 선택하여 이사짐센터 비교를 시작하세요.</p>
+
+        <h3>수도권 지역 이사 키워드</h3>
+        <ul>
+            <li><strong>서울 이사짐센터:</strong> 서울 포장이사, 강남구 이사, 서초구 포장이사, 송파구 이사, 강동구 이사 싼곳, 마포구 이사, 영등포 이사 추천, 노원구 이사 비용, 성동구 이사짐센터비교</li>
+            <li><strong>경기 이사짐센터:</strong> 경기도 포장이사, 수원 이사, 성남 이사, 용인 포장이사, 고양 일산 이사, 화성 동탄 이사, 안양 이사, 부천 이사, 남양주 이사, 하남 미사 이사, 평택 이사, 파주 이사</li>
+            <li><strong>인천 이사짐센터:</strong> 인천 포장이사, 부평구 이사, 연수구 송도 이사, 서구 청라 이사, 계양구 이사, 미추홀구 이사</li>
+        </ul>
+
+        <h3>지방 광역시 및 기타 지역 이사 키워드</h3>
+        <ul>
+            <li><strong>부산 이사짐센터:</strong> 부산 포장이사, 해운대구 이사, 동래구 이사, 부산진구 이사 싼곳, 수영구 광안리 이사, 기장군 이사, 사하구 이사</li>
+            <li><strong>대전 이사짐센터:</strong> 대전 포장이사, 유성구 이사, 서구 이사, 중구 이사, 동구 이사, 대전 용달이사 비용</li>
+            <li><strong>대구 이사짐센터:</strong> 대구 포장이사, 수성구 이사, 달서구 이사, 동구 이사, 북구 이사, 대구 이사짐센터 추천</li>
+            <li><strong>광주 이사짐센터:</strong> 광주 포장이사, 광산구 이사, 남구 이사, 북구 이사, 서구 이사</li>
+            <li><strong>울산 이사짐센터:</strong> 울산 포장이사, 남구 이사, 동구 이사, 북구 이사, 중구 이사</li>
+            <li><strong>세종 이사짐센터:</strong> 세종시 이사, 세종 포장이사, 세종 이사짐센터 추천, 세종 용달이사</li>
+            <li><strong>기타 지역:</strong> 천안 이사, 아산 이사, 청주 이사, 충주 이사, 강릉 이사, 원주 이사, 제주 포장이사, 김해 이사, 진주 이사, 포항 이사, 구미 이사, 목포 이사, 전주 이사</li>
+        </ul>
+        <div class="keyword-box">
+            <h4>함께 많이 찾는 키워드 (자동완성 및 연관 검색어):</h4>
+            <p>이사짐센터비교, 포장이사 견적, 이사 비용, 이사 싼곳, 이사 추천 업체, 이사 준비 체크리스트, 이사 후기, 원룸이사 비용, 내돈내산 이사 후기, 이사업체 순위, 사다리차 비용, 이사 당일 팁</p>
+        </div>
+    </section>
+
+    <section id="reviews">
+        <h2>내돈내산 실제 후기: 이사 업체 선택 시 반드시 참고하세요</h2>
+        <p>이사짐센터비교 플랫폼의 가장 큰 장점은 실제 고객들이 남긴 후기를 바탕으로 객관적인 업체 평가가 가능하다는 점입니다. 단순 광고가 아닌, '내돈내산'으로 경험한 생생한 후기들을 통해 이사업체의 실제 서비스 품질을 가늠할 수 있습니다. 후기를 확인할 때는 가격 만족도, 파손 여부, 직원 친절도, 추가 비용 발생 여부 등을 꼼꼼하게 살펴보세요.</p>
+
+        <h3>후기 분석을 통한 추천 기준</h3>
+        <ul>
+            <li><strong>견적 투명성:</strong> 계약 시 견적과 실제 지불 금액이 일치하는지 확인해야 합니다. 후기에 '추가 비용 요구' 사례가 많은 업체는 피하는 것이 좋습니다.</li>
+            <li><strong>파손 및 분실 보상:</strong> 이사 중 파손에 대한 신속한 보상 처리 후기가 많은 업체는 신뢰도가 높습니다. 보험 가입 여부와 보상 절차를 미리 확인하세요.</li>
+            <li><strong>직원 전문성 및 친절도:</strong> 이사 작업은 결국 사람이 하는 일입니다. 직원들의 전문성과 친절도는 서비스 만족도에 큰 영향을 미칩니다.</li>
+        </ul>
+
+        <p><strong>[2026년 이사 후기 데이터 분석]</strong> 후기 만족도가 높은 업체들은 단순히 가격이 저렴한 곳이 아니라, 고객과의 소통이 원활하고 책임감이 강한 업체들이었습니다. 이사짐센터비교를 할 때 가격이 조금 비싸더라도 신뢰할 수 있는 후기를 보유한 업체를 선택하는 것이 결과적으로 더 큰 만족을 가져다줄 수 있습니다.</p>
+    </section>
+
+    <section id="external-links" class="external-links">
+        <h2>공인된 신뢰성 있는 정보 출처 (외부 링크)</h2>
+        <p>이사 관련 법률, 소비자 피해 구제 기준 등 신뢰성 있는 정보를 확인하여 안전하게 이사하세요.</p>
+        <ul>
+            <li><a href="https://www.consumer.go.kr/index.do" target="_blank">한국소비자원</a>: 이사 서비스 관련 소비자 피해 구제 정보 및 신고 절차 안내.</li>
+            <li><a href="https://www.law.go.kr/" target="_blank">법제처 국가법령정보센터</a>: 이사 서비스 관련 법규 및 운송 약관 확인.</li>
+            <li><a href="https://namu.wiki/w/%EC%9D%B4%EC%82%AC" target="_blank">나무위키 - 이사</a>: 이사의 정의, 종류, 이사 과정에 대한 일반 정보.</li>
+            <li><a href="https://www.kostat.go.kr/" target="_blank">통계청</a>: 이사 수요 및 물가 변동 관련 통계 자료.</li>
+            <li><a href="https://www.mosf.go.kr/" target="_blank">기획재정부</a>: 이사 물가 동향 및 생활 경제 정보.</li>
+        </ul>
+    </section>
+
+    <section id="quote-form" class="quote-form-container">
+        <h2>이사짐센터 무료 견적 요청 및 비교 신청</h2>
+        <p>아래 폼을 작성하시면 30초 안에 전국 이사짐센터 견적을 실시간으로 비교하고, 가장 합리적인 '이사 싼곳'을 추천받을 수 있습니다.</p>
+        <form action="/submit-quote" method="post">
+            <div class="form-group">
+                <label for="date">이사 희망 날짜:</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div class="form-group">
+                <label for="from-address">출발지 주소 (시/군/구):</label>
+                <input type="text" id="from-address" name="from-address" placeholder="예: 서울특별시 강남구" required>
+            </div>
+            <div class="form-group">
+                <label for="to-address">도착지 주소 (시/군/구):</label>
+                <input type="text" id="to-address" name="to-address" placeholder="예: 경기도 수원시 영통구" required>
+            </div>
+            <div class="form-group">
+                <label for="move-type">이사 종류:</label>
+                <select id="move-type" name="move-type">
+                    <option value="packing">포장이사</option>
+                    <option value="half-packing">반포장이사</option>
+                    <option value="freight">용달이사</option>
+                    <option value="storage">보관이사</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="size">이삿짐 규모 (평수 또는 방 개수):</label>
+                <select id="size" name="size">
+                    <option value="studio">원룸 (1인 가구)</option>
+                    <option value="tworoom">투룸 (2인 가구)</option>
+                    <option value="apt20">아파트/빌라 (20평대)</option>
+                    <option value="apt30">아파트/빌라 (30평대 이상)</option>
+                    <option value="office">사무실/기업 이사</option>
+                    <option value="etc">기타</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="contact-phone">연락처:</label>
+                <input type="tel" id="contact-phone" name="contact-phone" placeholder="예: 010-1234-5678" required>
+            </div>
+            <button type="submit">이사 견적 무료 비교 신청하기</button>
+        </form>
+        <p style="text-align: center; font-size: 0.9rem; margin-top: 15px;">※ 견적 신청은 무료이며, 개인 정보는 안전하게 보호됩니다. 2026년 최신 데이터 기반으로 분석합니다.</p>
+    </section>
+
+    <footer>
+        <p>이사짐센터비교 플랫폼 | 사업자등록번호: 123-45-67890 | 고객센터: 1588-XXXX</p>
+        <p>주소: 서울특별시 강남구 XXX로 XXX | 이메일: info@yourdomain.com</p>
+        <p>&copy; 2026 Nationwide Moving Comparison Platform. All rights reserved.</p>
+    </footer>
+
+
+  
